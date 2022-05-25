@@ -13,3 +13,7 @@ variable "private_subnets" {
 variable "public_subnets" {
   default = ["192.168.64.0/19", "192.168.32.0/19", "192.168.0.0/19"]
 }
+
+variable "database_subnets" {
+  default = ["192.168.160.0/19", "192.168.128.0/19", "192.168.32.0/19"]
+}

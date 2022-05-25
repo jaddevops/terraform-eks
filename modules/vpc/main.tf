@@ -9,9 +9,11 @@ module "vpc" {
   azs                  = data.aws_availability_zones.available.names
   private_subnets      = var.private_subnets
   public_subnets       = var.public_subnets
+  database_subnets     = var.database_subnets
   enable_nat_gateway   = true
   single_nat_gateway   = true
   enable_dns_hostnames = true
+  create_database_subnet_group = true
 
   tags = {
     "kubernetes.io/cluster/${local.eks_cluster_name}" = "shared",
