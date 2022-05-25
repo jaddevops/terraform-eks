@@ -6,15 +6,15 @@ module "vpc" {
   eks_cluster_name = var.cluster_name
 }
 
-module "vpc_peering" {
-  source      = "../../modules/vpc_peering"
-  region      = var.rds_region
-  vpc_id      = module.vpc.vpc_id
-  natgw_ids   = module.vpc.natgw_ids
-  peer_vpc_id = var.rds_vpc_id
-  rds_subnet  = var.rds_subnet
-  name        = var.vpc_peer_name
-}
+#module "vpc_peering" {
+ # source      = "../../modules/vpc_peering"
+ # region      = var.rds_region
+ # vpc_id      = module.vpc.vpc_id
+ # natgw_ids   = module.vpc.natgw_ids
+ # peer_vpc_id = var.rds_vpc_id
+ # rds_subnet  = var.rds_subnet
+ # name        = var.vpc_peer_name
+#}
 
 resource "aws_kms_key" "eks" {
   description = "EKS Secret Encryption Key"
@@ -23,7 +23,7 @@ resource "aws_kms_key" "eks" {
 module "eks_cluster" {
   source                    = "../../modules/eks_cluster"
   cluster_name              = var.cluster_name
-  cluster_version           = "1.19"
+  cluster_version           = "1.21"
   cluster_sg_name           = "beta-cluster-sg"
   eks_cluster_role          = var.eks_cluster_role
   service_ipv4_cidr         = var.service_ipv4_cidr

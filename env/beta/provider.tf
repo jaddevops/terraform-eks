@@ -1,8 +1,8 @@
 terraform {
-  backend "s3" {
-    bucket = "clix-vpc-bucket"
-    key    = "eks-cluster-state"
-    region = "us-east-2"
+   backend "s3" {
+   bucket = "jad1bucket"
+   key    = "eks-cluster-state"
+   region = "us-east-2"
   }
 }
 
